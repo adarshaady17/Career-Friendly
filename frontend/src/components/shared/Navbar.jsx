@@ -4,14 +4,14 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { LogOut, User2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from 'react-redux'
+ import { useSelector } from 'react-redux'
 // import axios from 'axios'
 // import { USER_API_END_POINT } from '@/utils/constant'
 // import { setUser } from '@/redux/authSlice'
 // import { toast } from 'sonner'
 
 const Navbar = () => {
-  // const { user } = useSelector(store => store.auth);
+const { user } = useSelector(store => store.auth);
   // const dispatch = useDispatch();
   // const navigate = useNavigate();
 
@@ -28,7 +28,6 @@ const Navbar = () => {
   //         toast.error(error.response.data.message);
   //     }
   // }
-  const user=false;
   return (
     <div className="bg-white">
       <div className="flex items-center justify-between mx-10 max-w-7xl h-16">
@@ -79,7 +78,7 @@ const Navbar = () => {
                 <div className="flex flex-col my-2 text-gray-600">
                   <div className="flex w-fit items-center gap-2 cursor-pointer">
                     <User2/>
-                    <Button variant="link">View Profile</Button>
+                    <Button variant="link"><Link to="/profile">View Profile</Link></Button>
                   </div>
                   <div className="flex w-fit items-center gap-2 cursor-pointer">
                   <LogOut/>
