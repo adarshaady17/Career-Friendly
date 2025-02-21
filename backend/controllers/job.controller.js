@@ -1,5 +1,6 @@
 import { Job } from "../models/job.model.js";
-//admin post
+
+// admin post krega job
 export const postJob = async (req, res) => {
     try {
         const { title, description, requirements, salary, location, jobType, experience, position, companyId } = req.body;
@@ -32,7 +33,7 @@ export const postJob = async (req, res) => {
         console.log(error);
     }
 }
-// student
+// student k liye
 export const getAllJobs = async (req, res) => {
     try {
         const keyword = req.query.keyword || "";
@@ -43,8 +44,8 @@ export const getAllJobs = async (req, res) => {
             ]
         };
         const jobs = await Job.find(query).populate({
-             path: "company"
-         }).sort({ createdAt: -1 });
+            path: "company"
+        }).sort({ createdAt: -1 });
         if (!jobs) {
             return res.status(404).json({
                 message: "Jobs not found.",
@@ -59,13 +60,13 @@ export const getAllJobs = async (req, res) => {
         console.log(error);
     }
 }
-// student get job id
+// student
 export const getJobById = async (req, res) => {
     try {
         const jobId = req.params.id;
-         const job = await Job.findById(jobId).populate({
+        const job = await Job.findById(jobId).populate({
             path:"applications"
-         });
+        });
         if (!job) {
             return res.status(404).json({
                 message: "Jobs not found.",
@@ -77,7 +78,7 @@ export const getJobById = async (req, res) => {
         console.log(error);
     }
 }
-// admin create job
+// admin kitne job create kra hai abhi tk
 export const getAdminJobs = async (req, res) => {
     try {
         const adminId = req.id;
